@@ -6,6 +6,14 @@ def euler_1(model, y, t, dt):
     t1 = t + dt
     return y1, t1
 
+def euler_2(model, y, t, dt):
+    """ Second-order Euler method """
+    k1 = np.array(model(y, t))
+    k2 = np.array(model(y + k1 * dt, t))
+    y1 = y + 0.5 * (k1 + k2) * dt
+    t1 = t + dt
+    return y1, t1
+
 def ode_solve(model, initial_condition, integrator, dt, maxt):
     """ Numerical solution of a differential equation by the specified integrator.
 

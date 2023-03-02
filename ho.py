@@ -10,8 +10,10 @@ def ho(y, t):
 
 
 ys1, ts1 = ode.ode_solve(ho, [0, 1], integrator=ode.euler_1, dt=0.1, maxt=10)
+ys2, ts2 = ode.ode_solve(ho, [0, 1], integrator=ode.euler_2, dt=0.1, maxt=10)
 
 plt.plot(ts1, ys1[:,0], label="Euler 1")
+plt.plot(ts2, ys2[:,0], label="Euler 2")
 plt.plot(ts1, np.sin(ts1), label="sin(t)")
 plt.xlabel("t")
 plt.ylabel("y")
