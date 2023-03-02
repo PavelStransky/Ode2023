@@ -1,6 +1,8 @@
+import numpy as np
+
 def euler_1(model, y, t, dt):
     """ First-order Euler method """
-    y1 = y + model(y, t) * dt
+    y1 = y + np.array(model(y, t)) * dt
     t1 = t + dt
     return y1, t1
 
@@ -16,7 +18,7 @@ def ode_solve(model, initial_condition, integrator, dt, maxt):
         list with solution [y0, y1, y2, ...]
         list with times [t0, t1, y2, ...]
     """
-    y = initial_condition
+    y = np.array(initial_condition)         # Initial conditions
     ys = [y]
     
     t = 0
@@ -28,4 +30,4 @@ def ode_solve(model, initial_condition, integrator, dt, maxt):
         ys.append(y)
         ts.append(t)
             
-    return ys, ts
+    return np.array(ys), np.array(ts)
