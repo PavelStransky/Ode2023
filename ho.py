@@ -18,3 +18,5 @@ plt.plot(ts1, np.sin(ts1), label="sin(t)")
 plt.xlabel("t")
 plt.ylabel("y")
 plt.show()
+
+print("Nakreslili jsme funkci sinus.")
