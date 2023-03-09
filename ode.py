@@ -14,6 +14,18 @@ def euler_2(model, y, t, dt):
     t1 = t + dt
     return y1, t1
 
+def runge_kutta_4(model, y, t, dt):
+    """ Fourth-order Runge-Kutta algoritm """
+    d1 = np.array(model(y, t))
+    d2 = np.array(model(y + 0.5 * d1 * dt, t + 0.5 * dt))
+    d3 = np.array(model(y + 0.5 * d2 * dt, t + 0.5 * dt))
+    d4 = np.array(model(y + d3 * dt, t + dt))
+    
+    y1 = y + (d1 + 2 * d2 + 2 * d3 + d4) * dt / 6
+    t1 = t + dt
+    
+    return y1, t1
+
 def ode_solve(model, initial_condition, integrator, dt, maxt):
     """ Numerical solution of a differential equation by the specified integrator.
 
